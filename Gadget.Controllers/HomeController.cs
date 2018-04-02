@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Gadget.Core;
 using Gadget.Core.Tools.JsonSchema;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Schema;
 
@@ -13,25 +15,31 @@ namespace Gadget.Controllers
     {
         public IActionResult Index()
         {
-            var schemaVersions = Enum.GetValues(typeof(SchemaVersion));
+            ViewData["GadgetToolDic"] = GadgetToolScaner.Instance.Scan();
 
-            ViewData["schemaVersions"] = schemaVersions;
+            return View();
+        }
+
+        public IActionResult Run(string tool)
+        {
+            ViewData["tool"] = tool;
+
+            var dic = GadgetToolScaner.Instance.Scan();
+
+            if (dic.Keys.Any(x => x.Equals(tool, StringComparison.CurrentCultureIgnoreCase)))
+            {
+                ViewData["Html"] = dic.First(x => x.Key.Equals(tool, StringComparison.CurrentCultureIgnoreCase)).Value;
+            }
 
             return View();
         }
 
         [HttpPost]
         public JsonResult JsonSchemaResult([FromBody] JsonSchemaInputData inputData)
-        { 
-            Gadget.Core.Tools.JsonSchema.JsonSchemaTool jsonSchemaTool =
-                new JsonSchemaTool();
+        {
+            var tool = Request.Query["tool"];
 
-            var result = jsonSchemaTool.Go(inputData);
-            
-            return new JsonResult(result)
-            {
-                
-            };
+            return new JsonResult(GadgetToolScaner.Instance.ExecuteTool(tool, inputData));
         }
     }
 }

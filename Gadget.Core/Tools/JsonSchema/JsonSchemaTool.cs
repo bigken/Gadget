@@ -13,7 +13,7 @@ namespace Gadget.Core.Tools.JsonSchema
     {
         public string Go(JsonSchemaInputData inputData)
         {
-            var jtoken = JToken.Parse(inputData.RealData);
+            var jtoken = JToken.Parse(inputData.RawMaterial);
 
             return GenerateRootSchema(
                 jtoken).ToString(

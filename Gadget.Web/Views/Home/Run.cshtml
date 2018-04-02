@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Html
+
+@{
+    ViewData["Title"] = "Run";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    HtmlString html = ViewData["Html"] as HtmlString;
+    
+    if (html != null)
+    {
+       @(html)
+    }
+}
+
+<div class="row">
+<input type="button" id="btnGo" title="generate" value="Generate" />
+</div>
+<textarea id="divOutput" rows="10" cols="100">
+    
+</textarea>
+
+@section Scripts{
+    <script type="text/javascript">
+        $('#btnGo').on("click",
+            function() {
+                var gadgetData = new Object();
+                
+                $("[tag='gadgettool']").each(function () {
+                    console.log($(this).context.name);
+                    console.log($(this).val());
+                    gadgetData[$(this).context.name] = $(this).val();
+                });
+
+
+                $.ajax({
+                    async: false,
+                    url: "../home/JsonSchemaResult?tool=@(ViewData["tool"])",
+                    contentType: "application/json",
+                    dataType: "json",
+                    method: "POST",
+                    data: JSON.stringify(gadgetData)
+                }).done(function(data) {
+                    $("#divOutput").val(data);
+                }).fail(function(jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                });
+            });
+    </script>
+}
+
