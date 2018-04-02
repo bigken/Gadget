@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    Json: <textarea id="txtInput" rows="10" cols="100">{name:"ken",id:3525}</textarea>
+</div>
+
+<div class="row">
+    Schema Version:<select id="schemaVersion">
+        @{
+            foreach (var version in (Array)ViewData["schemaVersions"])
+            {
+                <option id="@(version)">@(version)</option>
+            }
+        }
+    </select><br />
+    <input type="button" id="btnGo" title="generate" value="Generate" />
+</div>
+<div class="row">
+    <textarea id="txtOutput" rows="10" cols="100"></textarea>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $('#btnGo').on("click",
+            function () {
+                console.log("go");
+                var inputData = $("#txtInput").val();
+                var schemaVersion = $("#schemaVersion").val();
+                $.ajax({
+                    async: false,
+                    url: "../home/JsonSchemaResult",
+                    contentType: "application/json",
+                    dataType: "json",
+                    method: "POST",
+                    data: JSON.stringify({ "RealData": inputData, "Version": schemaVersion })
+                }).done(function (data) {
+                    $("#txtOutput").val(data);
+                }).fail(function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                });
+            });
+    </script>
+}
