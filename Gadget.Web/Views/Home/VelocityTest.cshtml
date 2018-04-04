@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "VelocityTest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<textarea name="inputString" id="inputString">
+    <table border=1>
+        <thead>
+            <tr><td></td><td>name</td><td>price</td></tr>
+        </thead>
+        #foreach($p in $productList)
+        <tr><td><img width=100px height=100px src='$p.img' /></td><td>$p.name</td><td>$p.price.ToString("0.00")</td></tr>
+        #end
+    </table>
+</textarea>
+<input type="button" id="btnSubmit" value="Go" />
+<hr />
+
+
+<div id="divOutput">
+    
+</div>
+
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnSubmit").click(function () {
+                $.ajax({
+                    url: "/Home/ExecuteVelocity",
+                    type: "POST",
+                    dataType: "JSON",
+                    data: { inputString: escape($("#inputString").val())},
+                    success: function (data) {
+                        console.log(data);
+                        $("#divOutput").html(data);
+                    }
+                });
+            });
+        });
+    </script>
+}
