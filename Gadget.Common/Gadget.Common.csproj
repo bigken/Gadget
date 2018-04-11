@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Log\" />
+    <Folder Include="Cache\" />
+    <Folder Include="DataAccess\" />
+    <Folder Include="Network\" />
+    <Folder Include="SSO\" />
+    <Folder Include="UsageRate\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.SimpleCRUD" Version="1.13.0" />
+  </ItemGroup>
+
+</Project>
