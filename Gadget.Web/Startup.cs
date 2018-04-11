@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Gadget.Web.Middlewares;
 using Gadget.Web.Models;
-using Gadget.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -51,6 +47,10 @@ namespace Gadget.Web
 
             app.UseStaticFiles();
 
+            //app.UseLogRequest();
+
+            app.UseFrequencyControll();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
