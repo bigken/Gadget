@@ -1,0 +1,52 @@
+version: '3.4'
+
+services:
+  gadget.web:
+    image: ${DOCKER_REGISTRY}gadgetweb
+    build:
+      context: .
+      dockerfile: src/Gadget.Web/Dockerfile
+    ports:
+      - 13928:80
+    depends_on:
+      - gadget.api
+
+  gadget.api:
+    image: ${DOCKER_REGISTRY}gadgetapi
+    build:
+      context: .
+      dockerfile: src/Gadget.Api/Dockerfile
+    ports:
+      - 13927:80
+    depends_on:
+      - redis
+      - mariadb 
+
+  redis:
+    image: redis:4.0-alpine
+    ports:
+      - 13926:6379
+    volumes:
+      - gadget_redis_data:/data
+
+  mariadb:
+    restart: always
+    image: mariadb
+    ports:
+      - 13925:3306
+    volumes:
+      - gadget_mariadb_data:/data
+    environment:    
+      MYSQL_ROOT_PASSWORD: admin@123
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 13924:8080
+
+volumes:
+   gadget_mariadb_data:
+     external: true
+   gadget_redis_data:
+     external: true
