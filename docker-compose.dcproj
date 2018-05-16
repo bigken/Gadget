@@ -5,7 +5,7 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>1fc1c78a-360d-4415-9ae3-940b217ea773</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/api/values</DockerServiceUrl>
+    <DockerServiceUrl>{Scheme}://localhost:13927/swagger</DockerServiceUrl>
     <DockerServiceName>gadget.api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
