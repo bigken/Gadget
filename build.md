@@ -1,5 +1,6 @@
 ﻿# how to build
 ## prepare
++ https://github.com/bigken/Gadget.git pull project from github
 + vs2017 (15.7.1) *vs升级后相应的升级了docker的版本，如果低版本的需要修改docker compose文件中的版本*
 + docker *linux container*
 + stylecop/resharp *recommand but not mandatory*
