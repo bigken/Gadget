@@ -39,6 +39,7 @@ namespace Gadget.Api
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseUrls("http://*:13927")
                 .Build();
     }
 }

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Gadget.Web</title>
+    <title>@ViewData["Title"] - Gadget</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,13 +26,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-page="/Index" class="navbar-brand">Gadget.Web</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Gadget</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-page="/Index">Home</a></li>
-                    <li><a asp-page="/About">About</a></li>
-                    <li><a asp-page="/Contact">Contact</a></li>
+                    <!--
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">文章列表</a></li>
+                    -->
                 </ul>
             </div>
         </div>
@@ -41,7 +41,12 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - Gadget.Web</p>
+            <div class="col-md-3">
+                <a href="http://www.miibeian.gov.cn/" target="_blank" class="text">冀ICP备18013275号</a></span>
+            </div>
+            <div class="col-md-3">
+                <a href="mailto:bigken@163.com" target="_blank" class="text">bigken@163.com</a>
+            </div>
         </footer>
     </div>
 
