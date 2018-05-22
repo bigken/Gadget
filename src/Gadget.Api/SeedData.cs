@@ -37,24 +37,36 @@ namespace Gadget.Api
 
                 if (!dbContext.Articles.Any())
                 {
-                    await dbContext.Articles.AddAsync(new Article()
-                    {
-                        Author = dbContext.Authors.First(),
-                        ContextFilePath = "../article/empty.html",
-                        Title = "hello world"
-                    });
+                    await dbContext.Articles.AddRangeAsync(new[]{
+                            new Article(){
+                                Author = dbContext.Authors.First(),
+                                ContextFilePath = "../article/empty.html",
+                                Title = "hello world 1"
+                            },
+                            new Article(){
+                            Author = dbContext.Authors.First(),
+                            ContextFilePath = "../article/empty.html",
+                            Title = "hello world 2"
+                            }
+                        }
+                    );
                 }
 
                 await dbContext.SaveChangesAsync();
 
                 if (!dbContext.Comments.Any())
                 {
-                    await dbContext.Comments.AddAsync(new Comment()
-                    {
-                        Content = "gadget",
-                        Article = dbContext.Articles.First(),
-                        Author = dbContext.Authors.First()
-                    });
+                    await dbContext.Comments.AddRangeAsync(new[]{
+                        new Comment(){
+                            Content = "comment 1",
+                            Article = dbContext.Articles.First(),
+                            Author = dbContext.Authors.First()
+                        },
+                        new Comment(){
+                            Content = "comment 2",
+                            Article = dbContext.Articles.First(),
+                            Author = dbContext.Authors.First()
+                        }});
                 }
 
                 await dbContext.SaveChangesAsync();
