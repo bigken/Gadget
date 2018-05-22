@@ -12,7 +12,7 @@ namespace Gadget.Api
     public class SeedData
     {
         public static async void Initialize(IServiceProvider serviceProvider)
-        { 
+        {
             //only init data in dev & qa stage
             var env = serviceProvider.GetRequiredService<IHostingEnvironment>();
 
@@ -27,7 +27,33 @@ namespace Gadget.Api
                 {
                     await dbContext.Authors.AddAsync(new Author()
                     {
-                        Name = "ken"
+                        FirstName = "ken",
+                        LastName = "wang",
+                        Email = "bigken@163.com"
+                    });
+                }
+
+                await dbContext.SaveChangesAsync();
+
+                if (!dbContext.Articles.Any())
+                {
+                    await dbContext.Articles.AddAsync(new Article()
+                    {
+                        Author = dbContext.Authors.First(),
+                        ContextFilePath = "../article/empty.html",
+                        Title = "hello world"
+                    });
+                }
+
+                await dbContext.SaveChangesAsync();
+
+                if (!dbContext.Comments.Any())
+                {
+                    await dbContext.Comments.AddAsync(new Comment()
+                    {
+                        Content = "gadget",
+                        Article = dbContext.Articles.First(),
+                        Author = dbContext.Authors.First()
                     });
                 }
 

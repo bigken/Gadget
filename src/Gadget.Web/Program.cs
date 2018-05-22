@@ -20,7 +20,7 @@ namespace Gadget.Web
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://*:13928")
+                .UseUrls("http://*:23928")
                 .Build();
     }
 }

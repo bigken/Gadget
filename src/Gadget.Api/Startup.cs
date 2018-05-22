@@ -30,6 +30,16 @@ namespace Gadget.Api
         {
             AddDatabase(services);
 
+            services.AddCors(option =>
+            {
+                option.AddPolicy("default-cors", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+            
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
@@ -65,6 +75,8 @@ namespace Gadget.Api
                 app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gadget Service API"); });
             }
 
+            app.UseCors("default-cors");
+            
             app.UseMvc();
         }
 

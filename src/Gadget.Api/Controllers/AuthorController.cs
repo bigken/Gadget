@@ -22,7 +22,7 @@ namespace Gadget.Api.Controllers
         [ProducesResponseType(404)]
         public IEnumerable<string> Get()
         {
-            return _dbContext.Authors.Select(x => x.Name);
+            return _dbContext.Authors.Select(x => x.AvatarUrl);
         }
     }
 }

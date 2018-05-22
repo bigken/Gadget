@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: src/Gadget.Web/Dockerfile
     ports:
-      - 13928:80
+      - 13928:23928
     depends_on:
       - gadget.api
 
@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: src/Gadget.Api/Dockerfile
     ports:
-      - 13927:80
+      - 13927:23927
     depends_on:
       - redis
       - mariadb 

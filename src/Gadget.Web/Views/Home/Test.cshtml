@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Test";
+}
+
+<div id="divArticle"></div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.get("http://localhost:13927/api/v1/articals",
+                function (data) {
+
+                    var html = "";
+                    
+                    for (var i = 0; i < data.length; i++) {
+                        html += "<div>";
+                        html += data[i].title;
+                        html += "<br/>";
+                        html += "<img src='" + data[i].authorAvatar + "'/>";
+                        html += "</div>";
+                    }
+                    
+                    $("#divArticle").html(html);
+                });
+        });
+    </script>
+}

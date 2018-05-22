@@ -6,14 +6,13 @@ namespace Gadget.Data
 {
     public abstract class BaseEntity
     {
-        [Key]
         public long Id { get; set; }
 
-        public DateTime CreatedDateTimeUtc { get; set; }
+        public DateTime CreatedDateTime { get; set; }
 
         public string CreatedBy { get; set; }
 
-        public DateTime UpdatedDateTimeUtc { get; set; }
+        public DateTime UpdatedDateTime { get; set; }
 
         public string UpdatedBy { get; set; }
     }

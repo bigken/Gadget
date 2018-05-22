@@ -4,8 +4,12 @@ namespace Gadget.Data.Entity
 {
     public class Author : BaseEntity
     {
-        [Required]
-        [MaxLength(64)]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string AvatarUrl { get; set; }
+
+        public string Email { get; set; }
     }
 }
