@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Gadget.Api.Models;
-using Gadget.Data;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Gadget.Api.Controllers
+﻿namespace Gadget.Api.Controllers
 {
+    using Gadget.Api.Models;
+    using Gadget.Data;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
+
     [Route("api/v1/articals")]
     public class ArticalController : Controller
     {
