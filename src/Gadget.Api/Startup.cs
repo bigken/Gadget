@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Gadget.Data;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.PlatformAbstractions;
-using Swashbuckle.AspNetCore.Swagger;
-
-namespace Gadget.Api
+﻿namespace Gadget.Api
 {
+    using System.IO;
+    using Gadget.Data;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.PlatformAbstractions;
+    using Swashbuckle.AspNetCore.Swagger;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -39,7 +33,7 @@ namespace Gadget.Api
                         .AllowAnyHeader();
                 });
             });
-            
+
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
@@ -76,7 +70,7 @@ namespace Gadget.Api
             }
 
             app.UseCors("default-cors");
-            
+
             app.UseMvc();
         }
 
