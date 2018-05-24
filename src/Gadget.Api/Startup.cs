@@ -45,10 +45,6 @@
                 c.DescribeAllEnumsAsStrings();
 
                 c.SwaggerDoc("v1", new Info { Title = "Gadget Service API", Version = "v1" });
-
-                var filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "Gadget.Api.xml");
-
-                c.IncludeXmlComments(filePath);
             });
         }
 
