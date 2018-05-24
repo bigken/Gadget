@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Gadget.Data;
-using Gadget.Data.Entity;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Gadget.Api
+﻿namespace Gadget.Api
 {
+    using System;
+    using System.Linq;
+    using Gadget.Data;
+    using Gadget.Data.Entity;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.DependencyInjection;
+
     public class SeedData
     {
         public static async void Initialize(IServiceProvider serviceProvider)
         {
-            //only init data in dev & qa stage
+            using (var dbContext = serviceProvider.GetRequiredService<GadgetDbContext>())
+            {
+                await dbContext.Database.EnsureCreatedAsync();
+            }
+
+            // only seed data in dev & qa stage
             var env = serviceProvider.GetRequiredService<IHostingEnvironment>();
 
             if (!new[] { "Development", "qa" }.Contains(env.EnvironmentName))
