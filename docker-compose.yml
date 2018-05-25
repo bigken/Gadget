@@ -39,12 +39,6 @@ services:
     environment:    
       MYSQL_ROOT_PASSWORD: admin@123
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 13924:8080
-
 volumes:
    gadget_mariadb_data:
      external: true
