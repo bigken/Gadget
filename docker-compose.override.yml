@@ -4,12 +4,7 @@ services:
   gadget.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80"
 
   gadget.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80"
-
