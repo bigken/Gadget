@@ -9,15 +9,10 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile></DocumentationFile>
-  </PropertyGroup>
+  </PropertyGroup> 
 
   <ItemGroup>
     <Content Include="..\..\stylecop\stylecop.json" Link="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
