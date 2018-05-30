@@ -6,6 +6,10 @@ services:
     build:
       context: .
       dockerfile: src/Gadget.Web/Dockerfile
+    environment:
+      hostname: gadgetweb
+    networks:
+      - frontend
     ports:
       - 13928:23928
     depends_on:
@@ -16,6 +20,11 @@ services:
     build:
       context: .
       dockerfile: src/Gadget.Api/Dockerfile
+    environment:
+      hostname: gadgetapi
+    networks:
+      - frontend
+      - backend
     ports:
       - 13927:23927
     depends_on:
@@ -24,6 +33,10 @@ services:
 
   redis:
     image: redis:4.0-alpine
+    environment:
+      hostname: redis
+    networks:
+      - backend
     ports:
       - 13926:6379
     volumes:
@@ -32,11 +45,14 @@ services:
   mariadb:
     restart: always
     image: mariadb
+    networks:
+      - backend
     ports:
       - 13925:3306
     volumes:
       - gadget_mariadb_data:/data
-    environment:    
+    environment:
+      hostname: mariadb
       MYSQL_ROOT_PASSWORD: admin@123
 
 volumes:
@@ -44,3 +60,9 @@ volumes:
      external: true
    gadget_redis_data:
      external: true
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
