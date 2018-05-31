@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   gadget.web:
-    image: ${DOCKER_REGISTRY}gadgetweb
+    image: gadgetweb
     build:
       context: .
       dockerfile: src/Gadget.Web/Dockerfile
@@ -16,7 +16,7 @@ services:
       - gadget.api
 
   gadget.api:
-    image: ${DOCKER_REGISTRY}gadgetapi
+    image: gadgetapi
     build:
       context: .
       dockerfile: src/Gadget.Api/Dockerfile

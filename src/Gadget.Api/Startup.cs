@@ -1,4 +1,8 @@
-﻿namespace Gadget.Api
+﻿using System;
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+
+namespace Gadget.Api
 {
     using System.IO;
     using Gadget.Data;
@@ -73,6 +77,8 @@
         protected virtual void AddDatabase(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("GadgetDB");
+
+            Console.WriteLine($"GadgetDB ConnectionString Is ${connectionString}");
 
             services.AddDbContext<GadgetDbContext>(
                 options => options.UseMySql(connectionString, b => b.MigrationsAssembly("Gadget.Api"))
