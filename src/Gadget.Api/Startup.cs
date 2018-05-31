@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using Gadget.IService;
+using Gadget.Service;
+using Gadget.Service.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace Gadget.Api
@@ -27,6 +30,8 @@ namespace Gadget.Api
         public void ConfigureServices(IServiceCollection services)
         {
             AddDatabase(services);
+
+            services.AddGadgetService();
 
             services.AddCors(option =>
             {

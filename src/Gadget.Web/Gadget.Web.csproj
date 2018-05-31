@@ -14,4 +14,9 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Gadget.ApiClient\Gadget.ApiClient.csproj" />
+    <ProjectReference Include="..\Gadget.IService\Gadget.IService.csproj" />
+  </ItemGroup>
+
 </Project>

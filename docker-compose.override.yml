@@ -1,10 +1,11 @@
 version: '3.4'
 
 services:
-  gadget.api:
+  gadgetapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__GadgetDB=uid=root;pwd=admin@123;server=mariadb;port=3306;database=gadget;
-  gadget.web:
+  gadgetweb:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - GadgetApiBaseAddress=http://gadgetapi:23927

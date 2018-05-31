@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Gadget.Data;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Gadget.Api.Controllers
+﻿namespace Gadget.Api.Controllers
 {
+    using System.Threading.Tasks;
+    using Gadget.IService;
+    using Gadget.IService.Models;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("api/v1/authors")]
     public class AuthorController : Controller
     {
-        private readonly GadgetDbContext _dbContext;
+        private readonly IAuthorService _authorService;
 
-        public AuthorController(GadgetDbContext dbContext)
+        public AuthorController(IAuthorService authorService)
         {
-            _dbContext = dbContext;
+            _authorService = authorService;
         }
 
-        [HttpGet]
-        [ProducesResponseType(typeof(string[]), 200)]
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(AuthorModel), 200)]
         [ProducesResponseType(404)]
-        public IEnumerable<string> Get()
+        public async Task<AuthorModel> Get(long id)
         {
-            return _dbContext.Authors.Select(x => x.AvatarUrl);
+            return await _authorService.GetAuthor(id);
         }
     }
 }

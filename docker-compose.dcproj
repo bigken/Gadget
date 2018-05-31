@@ -6,7 +6,7 @@
     <ProjectGuid>1fc1c78a-360d-4415-9ae3-940b217ea773</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:13927/swagger</DockerServiceUrl>
-    <DockerServiceName>gadget.api</DockerServiceName>
+    <DockerServiceName>gadgetapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

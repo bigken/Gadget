@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gadget.Data\Gadget.Data.csproj" />
+    <ProjectReference Include="..\Gadget.IService\Gadget.IService.csproj" />
+    <ProjectReference Include="..\Gadget.Service\Gadget.Service.csproj" />
   </ItemGroup>
 
 </Project>

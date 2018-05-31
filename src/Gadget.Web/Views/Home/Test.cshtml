@@ -1,65 +1,21 @@
-﻿@{
+﻿@model Gadget.IService.Models.AuthorModel
+
+@{
     ViewData["Title"] = "Test";
 }
 
-<style type="text/css">
-    .card {
-        width: 48%;
-        margin: 0 1% 20px;
-        cursor: pointer;
-        background: #fff;
-        box-shadow: 0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);
-    }
-
-    .material-cover {
-        height: 200px;
-        margin-bottom: 0px;
-        position: relative;
-    }
-
-    .card-content {
-        padding: 10px 30px 20px;
-    }
-
-        .card-content .description {
-            margin-bottom: 16px;
-            font-size: 14px;
-            color: #999;
+<div class="row">
+    @{
+        if (Model != null)
+        {
+            <div class="col-lg-1">@(Model.AuthorId)</div>
+            <div class="col-lg-1">@(Model.AuthorName)</div>
+            <div class="col-lg-1">@(Model.AvatarUrl)</div>
+            <div class="col-lg-1">@(Model.Email)</div>
         }
-</style>
-
-<div id="divArticle"></div>
-
-<script id="articleTemplate" type="x-tmpl-mustache">
-    <div class="card">
-        <a>
-            <div class="material-cover">
-                <a href="{{authorId}}"><img src='{{authorAvatar}}' /> {{authorName}}</a>
-            </div>
-            <div class="card-content">
-                <h2>{{title}}</h2>
-                <p class="description">{{title}}</p>
-            </div>
-        </a>
-    </div>
-</script>
-
-@section Scripts{
-    <script src="~/js/mustache.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var template = $('#articleTemplate').html();
-
-            Mustache.parse(template);   // optional, speeds up future uses
-
-            $.get("http://localhost:13927/api/v1/articals",
-                function (data) {
-                    var html = "";
-                    for (var i = 0; i < data.length; i++) {
-                        html += Mustache.render(template, data[i]);
-                    }
-                    $('#divArticle').html(html);
-                });
-        });
-    </script>
-}
+        else
+        {
+            <div class="alert-danger">No Data</div>
+        }
+    }
+</div>
