@@ -4,7 +4,7 @@ services:
   gadgetapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__GadgetDB=uid=root;pwd=admin@123;server=mariadb;port=3306;database=gadget;
+      - ConnectionStrings__GadgetDB=uid=root;pwd=admin@123;server=gadgetdb;port=3306;database=gadget;
   gadgetweb:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

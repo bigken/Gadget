@@ -11,6 +11,8 @@ services:
     ports:
       - 13928:23928
     depends_on:
+      - gadgetapi    
+    links:
       - gadgetapi
 
   gadgetapi:
@@ -24,10 +26,13 @@ services:
     ports:
       - 13927:23927
     depends_on:
-      - redis
-      - mariadb 
+      - gadgetcache
+      - gadgetdb
+    links:
+      - gadgetcache
+      - gadgetdb
 
-  redis:
+  gadgetcache:
     image: redis:4.0-alpine
     networks:
       - backend
@@ -36,7 +41,7 @@ services:
     volumes:
       - gadget_redis_data:/data
 
-  mariadb:
+  gadgetdb:
     restart: always
     image: mariadb
     networks:
