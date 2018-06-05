@@ -10,58 +10,12 @@
         {
             <div class="col-lg-1">@(Model.AuthorId)</div>
             <div class="col-lg-1">@(Model.AuthorName)</div>
-            <div class="col-lg-2"><img src="@(Model.AvatarUrl)" /></div>
+            <div class="col-lg-1"><img src="@(Model.AvatarUrl)" /></div>
             <div class="col-lg-1">@(Model.Email)</div>
-            <div class="col-lg-1"><input type="button" value="test google event" name="btnSendGoogleTagEvent" /> </div>
-
-            <script type="text/javascript">
-                gtag('config', 'GA_TRACKING_ID', {
-                    'cookie_name': 'gadet_gtag_cookie',
-                    'cookie_expires': 2419200,  // 28 days, in seconds
-                    'user_id':'@(Model.AuthorId)'
-                });
-            </script>
         }
         else
         {
             <div class="alert-danger">No Data</div>
-
-            <script type="text/javascript">
-                gtag('event', 'exception', {
-                    'description': 'no author data found',
-                    'fatal': false
-                });
-            </script>
         }
     }
 </div>
-
-@section Scripts
-    {
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Feature detects Navigation Timing API support.
-            if (window.performance) {
-                // Gets the number of milliseconds since page load
-                var timeSincePageLoad = Math.round(performance.now());
-
-                // Sends the timing event to Google Analytics.
-                gtag('event', 'timing_complete', {
-                    'name': 'load',
-                    'value': timeSincePageLoad,
-                    'event_category': 'JS Dependencies'
-                });
-            }
-
-
-            $("[name=btnSendGoogleTagEvent]").on("click",
-                function (event) {
-                    gtag('event', 'open_test_page', {
-                        'event_category': 'test_event',
-                        'event_label': 'test',
-                        'value': 1
-                    });
-                });
-        });
-    </script>
-}
