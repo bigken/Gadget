@@ -11,8 +11,6 @@ services:
     ports:
       - 13928:23928
     depends_on:
-      - gadgetapi    
-    links:
       - gadgetapi
 
   gadgetapi:
@@ -26,9 +24,6 @@ services:
     ports:
       - 13927:23927
     depends_on:
-      - gadgetcache
-      - gadgetdb
-    links:
       - gadgetcache
       - gadgetdb
 
