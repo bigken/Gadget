@@ -6,5 +6,7 @@ namespace Gadget.IService
     public interface IAuthorService
     {
         Task<AuthorModel> GetAuthor(long authorId);
+
+        Task<bool> AddAuthor(AuthorModel author);
     }
 }

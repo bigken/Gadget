@@ -1,12 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Gadget.IService;
-
-namespace Gadget.Service.Extensions
+﻿namespace Gadget.Service.Extensions
 {
+    using Gadget.IService;
+    using Microsoft.Extensions.DependencyInjection;
+
     public static class ServiceCollectionExtension
     {
         public static void AddGadgetService(this IServiceCollection services)

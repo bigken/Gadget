@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Gadget.Data.Entity
+﻿namespace Gadget.Data.Entity
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Article : BaseEntity
     {
         public string Title { get; set; }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
-
-namespace Gadget.Data
+﻿namespace Gadget.Data
 {
+    using System;
+
     public abstract class BaseEntity
     {
         public long Id { get; set; }

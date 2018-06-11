@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Gadget.Data.Entity
+﻿namespace Gadget.Data.Entity
 {
     public class Author : BaseEntity
     {

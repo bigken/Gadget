@@ -1,20 +1,14 @@
-﻿using System;
-using System.Diagnostics;
-using Gadget.IService;
-using Gadget.Service;
-using Gadget.Service.Extensions;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Gadget.Api
 {
-    using System.IO;
+    using System;
     using Gadget.Data;
+    using Gadget.Service.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.PlatformAbstractions;
     using Swashbuckle.AspNetCore.Swagger;
 
     public class Startup
@@ -86,7 +80,7 @@ namespace Gadget.Api
             Console.WriteLine($"GadgetDB ConnectionString Is ${connectionString}");
 
             services.AddDbContext<GadgetDbContext>(
-                options => options.UseMySql(connectionString, b => b.MigrationsAssembly("Gadget.Api"))
+                options => options.UseMySQL(connectionString, b => b.MigrationsAssembly("Gadget.Api"))
             );
         }
     }

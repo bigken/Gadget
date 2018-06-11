@@ -1,15 +1,17 @@
-﻿using Gadget.Data.Entity;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Gadget.Data
+﻿namespace Gadget.Data
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Gadget.Data.Entity;
+    using Microsoft.EntityFrameworkCore;
+
     public class GadgetDbContext : DbContext
     {
         public DbSet<Article> Articles { get; set; }
+
         public DbSet<Author> Authors { get; set; }
+
         public DbSet<Comment> Comments { get; set; }
 
         public GadgetDbContext(DbContextOptions<GadgetDbContext> options) : base(options)
@@ -82,7 +84,7 @@ namespace Gadget.Data
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken())
         {
             AuditEntities();
-            
+
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
@@ -97,7 +99,7 @@ namespace Gadget.Data
                 {
                     entry.Property(e => e.CreatedBy).CurrentValue = userName;
                     entry.Property(e => e.UpdatedBy).CurrentValue = userName;
-                    
+
                 }
                 else if (entry.State == EntityState.Modified)
                 {

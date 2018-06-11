@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Gadget.Data\Gadget.Data.csproj" />
     <ProjectReference Include="..\Gadget.IService\Gadget.IService.csproj" />
+    <ProjectReference Include="..\Gadget.Lib\Gadget.Lib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -18,9 +18,21 @@
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(AuthorModel), 200)]
         [ProducesResponseType(404)]
-        public async Task<AuthorModel> Get(long id)
+        public async Task<IActionResult> GetAsync(long id)
         {
-            return await _authorService.GetAuthor(id);
+            return Ok(await _authorService.GetAuthor(id));
+        }
+
+        public async Task<IActionResult> Post([FromBody] AuthorModel author)
+        {
+            if (ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _authorService.AddAuthor(author);
+
+            return Ok();
         }
     }
 }
