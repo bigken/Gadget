@@ -1,0 +1,80 @@
+using System;
+					
+public class Program
+{
+		public enum Color{
+			Red=10,
+			Black=20
+		}
+		
+		public enum Weekday{
+			Monday=1
+		}
+	
+	public static void Main()
+	{	
+		Color c = Color.Black;		
+		Weekday w = (Weekday)c;
+		Console.WriteLine(w);
+		//1. what is the output?
+		
+		Console.WriteLine(Enum.GetName(typeof(Weekday),w));
+		//2. what is the output?
+		//3. what is enumeration in C#?
+		//4. what do we learn from this case?				
+		
+		var dic = new System.Collections.Generic.Dictionary<int,string>();	
+		//5. why we can hit a key so fast? what data structure does Dictionay use? 
+		
+		Console.WriteLine(dic.Count);
+		Console.WriteLine(dic.Keys.Count);
+		//6. what is the difference?
+		
+		if(dic.ContainsKey(1)){
+			Console.WriteLine(dic[1]);
+		}		
+		//7. how to improve this code?
+		
+		//8. In k8s what is the cmd of get last 30 lines logs in previous pod?
+		//9. In k8s how to execute curl cmd in container?
+		
+		//9. when we do unit test,how to mock a static method?
+		
+		//10. have you ever use promethues? what does `increase` means?
+		//11. what is the difference between irate and rate.
+		
+		//12. if I want to query "company is iherb, age between 20 to 30, name is not ken", what is the expression in ES(elasticsearch)?
+		
+		//13. how do you use redis in daily work?
+		//14. can pub/sub work when redis is offline?
+		
+		
+		
+		
+		//15. we have many different kinds of promotions in iHerb. 
+		// CrossSelling (ItemLevel, A+B 10% discount), 
+		// WeeklyBrand (ItemLevel, A 15% discount), 
+		// FlashDeal (ItemLevel, A 30% discount), 
+		// RewardPromo (Cart Level 5% discount with ReferralCode),
+		// ManualPromo (Cart Level 10% discount with PromoCode).
+		// all the promoes have same processing pipeline,
+		// 1. get promo data from downstream service,
+		// 2. validate your product and collect validating failed reason.
+		// 3. apply discount.
+		// please design the code architecture to implement this.
+		
+		
+		
+		
+		
+		//16. when calculating cross selling, we have the following combinations
+		// A + B 10%
+		// A + C 15%
+		// B + C 20% 		
+		// if I have the cart like this
+		// A $100.00 * 5
+		// B $50.00  * 3
+		// C $70.00  * 4
+		// how can I get the highest discount amount?
+	}
+}
